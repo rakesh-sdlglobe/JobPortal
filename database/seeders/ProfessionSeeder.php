@@ -16,7 +16,7 @@ class ProfessionSeeder extends Seeder
     public function run()
     {
         $professions = [
-            'Physician', 'Engineer', 'Chef', 'Lawyer', 'Designer', 'Labourer', 'Dentist', 'Accountant', 'Dental Hygienist', 'Actor', 'Electrician', 'Software Developer', 'Pharmacist', 'Technician', 'Artist', 'Teacher', 'Journalist', 'Cashier', 'Secretary', 'Scientist', 'Soldier', 'Gardener', 'Farmer', 'Librarian', 'Driver', 'Fishermen', 'Police Officer ', 'Tailor'
+           'Select', '', 'Engineer', 'Chef', 'Lawyer', 'Designer', 'Labourer', 'Dentist', 'Accountant', 'Dental Hygienist', 'Actor', 'Electrician', 'Software Developer', 'Pharmacist', 'Technician', 'Artist', 'Teacher', 'Journalist', 'Cashier', 'Secretary', 'Scientist', 'Soldier', 'Gardener', 'Farmer', 'Librarian', 'Driver', 'Fishermen', 'Police Officer ', 'Tailor'
         ];
 
         foreach ($professions as $profession) {

@@ -16,7 +16,7 @@ class EducationSeeder extends Seeder
     public function run()
     {
         $educations = [
-            'High School', 'Intermediate', 'Bachelor Degree', 'Master Degree', 'Graduated', 'PhD', 'Any'
+            'High school', 'Intermediate', 'Bachelor Degree', 'Master Degree', 'Graduated', 'Phd', 'Any'
         ];
 
         foreach ($educations as $education) {

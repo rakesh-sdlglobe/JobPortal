@@ -78,7 +78,7 @@ class CandidateFactory extends Factory
             'website' => $this->faker->url(),
             'title' => $this->faker->word,
             'birth_date' => Carbon::now(),
-            'marital_status' => Arr::random(['married', 'single']),
+            'marital_status' => Arr::random(['Select','married', 'single']),
             'photo' => $this->faker->imageUrl,
             'bio' => $this->faker->text(),
             'profile_complete' => 0,

@@ -263,8 +263,8 @@
                                     <select name="nationality_id"
                                         class="form-control select2bs4 {{ error('nationality_id') }}"
                                         id="nationality_id">
-                                        <option value="" class="d-none">
-                                            {{ __('nationality') }}
+                                        <option value="" class="d-none"style="display: none;  >
+                                            {{ ('nationality') }}
                                         </option>
                                         @foreach ($nationalities as $nationality)
                                             <option

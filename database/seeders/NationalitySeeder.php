@@ -16,6 +16,7 @@ class NationalitySeeder extends Seeder
     public function run()
     {
         $nationalities = [
+            "Select Country",
             "Afghan",
             "Albanian",
             "Algerian",

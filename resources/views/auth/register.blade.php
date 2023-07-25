@@ -20,7 +20,7 @@
 @endsection
 
 @section('content')
-    <div class="row" style=" background: #31a4c3;background: linear-gradient(45deg, #31a4c3, #ef459b); height:180vh">
+    <div class="row" style="background-image: linear-gradient(to right,  rgb(250, 250, 250),#35c8f0) !important; height:180vh">
         <div class="auth-page2 order-1 order-lg-0">
             <div class="rt-spacer-100  rt-spacer-lg-50 rt-spacer-xs-50"></div>
             <div class="rt-spacer-100 rt-spacer-lg-50 rt-spacer-xs-0"></div>

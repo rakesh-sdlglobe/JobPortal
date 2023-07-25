@@ -1,5 +1,8 @@
 @extends('auth.layouts.auth')
 <link rel="stylesheet" href="{{ asset('cssfile/style.css') }}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
 
 @section('meta')
     @php
@@ -31,9 +34,9 @@
                                 @csrf
                                 <a href="/" class="brand-logo" id="img-login-logo"><img
                                         src="{{asset('frontend\assets\images\skill9_png_logo-2.png')}}" alt=""></a>
-                                <h4 style=" text-shadow: 2px 2px #fff; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">CHANGE HAPPENS TODAY</h4>
+                                <h4 style=" text-shadow: 2px 2px #fff; font-family: 'Dancing Script', cursive;">"CHANGE HAPPENS TODAY"</h4>
                                 <hr style="border: black; height:2px">
-                                <h6 class="rt-mb-20 text-center text-gray-200">{{ __('LOGIN SKILL 9 JOB PORTAL ') }}</h6>
+                                <h6 class="rt-mb-20 text-center text-gray-400">{{ __('LOGIN SKILL 9 JOB PORTAL ') }}</h6>
                                 <div class="fromGroup rt-mb-15">
                                     <input type="email" name="email" id="email"
                                         class="form-control @error('email') is-invalid @enderror"
