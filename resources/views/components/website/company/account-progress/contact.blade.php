@@ -39,7 +39,9 @@
                             <x-forms.required />
                         </label>
                         <input class="phonecode @error('phone') is-invalid border-danger @enderror" name="phone"
-                            type="number" value="{{ old('phone', $user->contactInfo->phone) }}"
+                            {{-- type="number" value="{{ old('phone', $user->contactInfo->phone) }}" --}}
+                           type="number" value="{{ old('phone') }}">
+
                             placeholder="{{ __('phone') }}" />
                         @error('phone')
                             <span class="invalid-feedback" role="alert">
@@ -56,7 +58,8 @@
                             <div class="form-control-icon">
                                 <input class="form-control @error('email') is-invalid @enderror" name="email"
                                     type="email" placeholder="{{ __('email_address') }}"
-                                    value="{{ old('email', $user->contactInfo->email) }}">
+                                    {{-- value="{{ old('email', $user->contactInfo->email) }}"> --}}
+                                     value="{{ old('phone') }}">
                                 <div class="icon-badge-2">
                                     <x-svg.envelope-icon width="24" height="24" />
                                 </div>

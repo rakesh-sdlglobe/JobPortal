@@ -32,14 +32,20 @@
                                 <li class="nav-item" role="presentation">
                                     <button class="nav-link {{ session('type') == 'profile' ? 'active' : '' }}"
                                         id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile"
-                                        type="button" role="tab" aria-controls="pills-profile" aria-selected="false" >
+                                        type="button" role="tab" aria-controls="pills-profile" aria-selected="false">
                                         <x-svg.user-round-icon />
                                         {{ __('profile') }}
-                                         <span class="tooltip-custom" data-bs-toggle="tooltip" title="Profile">
+                                        <span class="tooltip-custom" data-bs-toggle="tooltip" title="Profile">
                                             <i class="fas fa-info-circle"></i>
                                         </span>
                                     </button>
                                 </li>
+                                <script>
+                                    document.addEventListener('DOMContentLoaded', function() {
+                                        new bootstrap.Tooltip(document.querySelector('[data-bs-toggle="tooltip"]'));
+                                    });
+                                </script>
+
                                 <li class="nav-item" role="presentation">
                                     <button class="nav-link {{ session('type') == 'social' ? 'active' : '' }}"
                                         id="pills-social-tab" data-bs-toggle="pill" data-bs-target="#pills-social"
@@ -256,10 +262,10 @@
                                                         class="body-font-4 d-block text-gray-900 rt-mb-8" />
                                                     <select class="select2-taggable w-100-p" required
                                                         @error('gender') is-invalid @enderror name="gender">
-                                                        <option value="none" selected disabled hidden  >
+                                                        <option value="none" selected disabled hidden>
                                                             {{ __('') }} {{ __('--Select--') }}
                                                         </option>
-                                                        <option >
+                                                        <option>
                                                             {{ __('male') }}
                                                         </option>
                                                         <option @if ($candidate->gender == 'female') selected @endif
@@ -281,7 +287,7 @@
                                                     <x-forms.label :required="true" name="marital_status"
                                                         class="body-font-4 d-block text-gray-900 rt-mb-8" />
                                                     <select name="marital_status" class="rt-selectactive w-100-p">
-                                                          <option value="none" selected disabled hidden >
+                                                        <option value="none" selected disabled hidden>
                                                             {{ __('') }} {{ __('--Select--') }}
                                                         </option>
                                                         <option>{{ __('married') }}</option>
@@ -579,10 +585,10 @@
                                     <hr>
                                     <div class="dashboard-account-setting-item setting-border">
                                         {{-- <h6>{{ __('notification') }}</h6> --}}
-                                        <form id="alert" action="{{ route('candidate.settingUpdate') }}"
-                                            method="POST">
+                                        {{-- <form id="alert" action="{{ route('candidate.settingUpdate') }}" --}}
+                                        <form action="{{ route('candidate.settingUpdate') }}" method="POST">
                                             @csrf
-                                            @method('put')
+                                            @method('PUT')
                                             {{-- <input type="hidden" name="type" value="alert">
                                         <div class="row">
                                             <div class="col-lg-6">
@@ -643,11 +649,15 @@
                                                         class="f-size-14 text-gray-700 rt-mb-6" />
                                                     <div class="fromGroup has-icon2">
                                                         <div class="form-control-icon">
-                                                            <select name="role_id" id="job_role">
-
+                                                            {{-- <select name="role_id" id="job_role"> --}}
+                                                            <select name="role_id" id="job_role" class="select2-taggable w-100-p"
+                                                                required>
+                                                                <option value="none" selected disabled hidden>
+                                                                    {{ __('') }} {{ __('--Select--') }}
+                                                                </option>
                                                                 @foreach ($job_roles as $job_role)
                                                                     <option value="{{ $job_role->id }}"
-                                                                        @if ($job_role->id == $candidate->role_id) selected @endif>
+                                                                        @if (app('request')->input('type') == $candidate->role_id) selected @endif>
                                                                         {{ $job_role->name }}</option>
                                                                 @endforeach
                                                             </select>
