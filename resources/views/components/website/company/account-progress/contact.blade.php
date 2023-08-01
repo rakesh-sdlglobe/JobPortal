@@ -40,7 +40,7 @@
                         </label>
                         <input class="phonecode @error('phone') is-invalid border-danger @enderror" name="phone"
                             {{-- type="number" value="{{ old('phone', $user->contactInfo->phone) }}" --}}
-                           type="number" value="{{ old('phone') }}">
+                           type="number" value="{{ old('phone') }}"
 
                             placeholder="{{ __('phone') }}" />
                         @error('phone')
