@@ -1,5 +1,6 @@
 body {
     background-color: rgb(255, 255, 255) !important;
+
 }
 #nav-menu{
     background-color: #97d9f1 !important;
@@ -18,9 +19,8 @@ body {
      background-image: linear-gradient(to right, rgb(246, 242, 242), #82c0d1) !important;
      /* background-image: linear-gradient(to right, rgb(246, 242, 242), #e5e583) !important; */
      /* background-image: linear-gradient(to right, rgb(246, 242, 242), #2255bb) !important; */
-
-
-
+     /* height: 100vh; */
+    padding-top: 100px;
 }
 #card-body-homepage{
     background-color: #f9f9fc!important;

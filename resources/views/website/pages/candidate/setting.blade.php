@@ -104,15 +104,15 @@
                                                     <div class="col-lg-6 mb-3">
                                                         <x-forms.label :required="true" name="experience"
                                                             class="pointer body-font-4 d-block text-gray-900 rt-mb-8" />
-                                                        <select name="experience" class="rt-selectactive w-100-p" required>
+                                                        <select name="experience" class="select2-taggable w-100-p" required>
                                                             <option value="none" selected disabled hidden>
-                                                                {{ __('') }} {{ __('--Select --') }}
+                                                                {{ __('--Select--') }}
                                                             </option>
                                                             @foreach ($experiences as $experience)
                                                                 <option
-                                                                    {{ app('request')->input('type') == $experience->id ? 'selected' : '' }}
-                                                                    value="{{ $experience->id }}">{{ $experience->name }}
-                                                                </option>
+                                                                    {{ $candidate->experience_id == $experience->id ? 'selected' : '' }}
+                                                                    value="{{ $experience->id }}">
+                                                                    {{ $experience->name }}</option>
                                                             @endforeach
                                                         </select>
                                                         @error('experience')
@@ -122,21 +122,23 @@
                                                     <div class="col-lg-6 mb-3">
                                                         <x-forms.label :required="true" name="education"
                                                             class="pointer body-font-4 d-block text-gray-900 rt-mb-8" />
-                                                        <select name="nationality" class="select2-taggable w-100-p"
+                                                        <select name="education" class="select2-taggable w-100-p"
                                                             required>
                                                             <option value="none" selected disabled hidden>
-                                                                {{ __('') }} {{ __('--Select--') }}
+                                                                {{ __('--Select--') }}
                                                             </option>
                                                             @foreach ($educations as $education)
                                                                 <option
-                                                                    {{ app('request')->input('type') == $education->id ? 'selected' : '' }}
-                                                                    value="{{ $education->id }}">{{ $education->name }}
-                                                                </option>
+                                                                    {{ $candidate->education_id == $education->id ? 'selected' : '' }}
+                                                                    value="{{ $education->id }}">
+                                                                    {{ $education->name }}</option>
                                                             @endforeach
                                                         </select>
                                                         @error('education')
                                                             <span class="text-danger">{{ $message }}</span>
                                                         @enderror
+
+
                                                     </div>
                                                     <div class="col-12 mb-3">
                                                         <x-forms.label :required="false" name="personal_website"
@@ -242,18 +244,18 @@
                                                     <label class="text-dark" for="role">{{ __('nationality') }}:
                                                         <sup class="text-danger">*</sup></label>
                                                     <select name="nationality" class="rt-selectactive w-100-p" required>
-                                                        <option value="none" selected disabled hidden>
+                                                        {{-- <option value="none" selected disabled hidden>
                                                             {{ __('') }} {{ __('--Select--') }}
-                                                        </option>
+                                                        </option> --}}
                                                         @foreach ($nationalities as $nationality)
-                                                            {{-- <option
+                                                            <option
                                                                 {{ $candidate->nationality_id == $nationality->id ? 'selected' : '' }}
                                                                 value="{{ $nationality->id }}">
-                                                                {{ $nationality->name }}</option> --}}
-                                                            <option
+                                                                {{ $nationality->name }}</option>
+                                                            {{-- <option
                                                                 {{ app('request')->input('type') == $nationality->id ? 'selected' : '' }}
                                                                 value="{{ $nationality->id }}">{{ $nationality->name }}
-                                                            </option>
+                                                            </option> --}}
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -262,10 +264,8 @@
                                                         class="body-font-4 d-block text-gray-900 rt-mb-8" />
                                                     <select class="select2-taggable w-100-p" required
                                                         @error('gender') is-invalid @enderror name="gender">
-                                                        <option value="none" selected disabled hidden>
-                                                            {{ __('') }} {{ __('--Select--') }}
-                                                        </option>
-                                                        <option>
+                                                        <option @if ($candidate->gender == 'male') selected @endif
+                                                            value="male">
                                                             {{ __('male') }}
                                                         </option>
                                                         <option @if ($candidate->gender == 'female') selected @endif
@@ -287,10 +287,9 @@
                                                     <x-forms.label :required="true" name="marital_status"
                                                         class="body-font-4 d-block text-gray-900 rt-mb-8" />
                                                     <select name="marital_status" class="rt-selectactive w-100-p">
-                                                        <option value="none" selected disabled hidden>
-                                                            {{ __('') }} {{ __('--Select--') }}
-                                                        </option>
-                                                        <option>{{ __('married') }}</option>
+
+                                                        <option @if ($candidate->marital_status == 'married') selected @endif
+                                                            value="married">{{ __('married') }}</option>
                                                         <option @if ($candidate->marital_status == 'single') selected @endif
                                                             value="single">{{ __('single') }}</option>
                                                     </select>
@@ -303,14 +302,11 @@
                                                     <x-forms.label :required="true" name="profession"
                                                         class="body-font-4 d-block text-gray-900 rt-mb-8" />
                                                     <select name="profession" class="rt-selectactive w-100-p" required>
-                                                        <option value="none" selected disabled hidden>
-                                                            {{ __('') }} {{ __('--Select--') }}
-                                                        </option>
                                                         @foreach ($professions as $profession)
                                                             <option
-                                                                {{ app('request')->input('type') == $profession->id ? 'selected' : '' }}
-                                                                value="{{ $profession->id }}">{{ $profession->name }}
-                                                            </option>
+                                                                {{ $candidate->profession_id == $profession->id ? 'selected' : '' }}
+                                                                value="{{ $profession->id }}">
+                                                                {{ $profession->name }}</option>
                                                         @endforeach
                                                     </select>
                                                     @error('profession')
@@ -650,17 +646,18 @@
                                                     <div class="fromGroup has-icon2">
                                                         <div class="form-control-icon">
                                                             {{-- <select name="role_id" id="job_role"> --}}
-                                                            <select name="role_id" id="job_role" class="select2-taggable w-100-p"
-                                                                required>
-                                                                <option value="none" selected disabled hidden>
-                                                                    {{ __('') }} {{ __('--Select--') }}
+                                                            <select name="role_id" id="job_role"
+                                                                class="select2-taggable w-100-p" required>
+                                                                <option value="" selected disabled hidden>
+                                                                    {{ __('--Select--') }}
                                                                 </option>
                                                                 @foreach ($job_roles as $job_role)
                                                                     <option value="{{ $job_role->id }}"
-                                                                        @if (app('request')->input('type') == $candidate->role_id) selected @endif>
+                                                                        @if (old('role_id') == $job_role->id) selected @endif>
                                                                         {{ $job_role->name }}</option>
                                                                 @endforeach
                                                             </select>
+
                                                             <br>
                                                             <p>
                                                                 {{ __('note_you_will_be_notified_for_this_role_only') }}

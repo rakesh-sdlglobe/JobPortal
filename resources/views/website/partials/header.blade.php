@@ -451,7 +451,7 @@
     $(document).ready(function() {
         $('.candidate-profile').hover(function() {
             var profileName = $(this).find('.tooltip-profile-name').text();
-            $(this).attr('title', 'Click to view ' + profileName + "'s profile");
+            $(this).attr('title', ' ' + profileName + "(Account)");
         });
     });
 </script>

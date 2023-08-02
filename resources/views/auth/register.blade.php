@@ -23,8 +23,8 @@
     <div class="row" style="background-image: linear-gradient(to right,  rgb(250, 250, 250),#35c8f0) !important; height:180vh">
         <div class="auth-page2 order-1 order-lg-0">
             <div class="rt-spacer-100  rt-spacer-lg-50 rt-spacer-xs-50"></div>
-            <div class="rt-spacer-100 rt-spacer-lg-50 rt-spacer-xs-0"></div>
-            <div class="rt-spacer-50 rt-spacer-lg-0 rt-spacer-xs-0"></div>
+            {{-- <div class="rt-spacer-100 rt-spacer-lg-50 rt-spacer-xs-0"></div>
+            <div class="rt-spacer-50 rt-spacer-lg-0 rt-spacer-xs-0"></div> --}}
             <div class="container">
                 <div class="row">
                     <div class="col-xl-5 col-lg-8 col-md-9">
@@ -144,7 +144,7 @@
                                             <span>
                                                 <a href="{{ route('login') }}">{{ __('log_in') }}</a>
                                             </span>
-                                        </span>
+                                </span>
                                 <div class="d-flex justify-content-between btn-group flex-column flex-md-row ">
                                     <div class="row">
                                         @php
