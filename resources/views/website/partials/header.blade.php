@@ -1,8 +1,9 @@
-<link rel="stylesheet" href="{{asset('cssfile/style.css')}}">
+<link rel="stylesheet" href="{{ asset('cssfile/style.css') }}">
 <header class="header rt-fixed-top">
     <div class="n-header">
-        <div class="n-header--top relative" style="background-image: linear-gradient(to right, rgb(246, 242, 242), #82c0d1) !important;">
-            <div class="container" >
+        <div class="n-header--top relative"
+            style="background-image: linear-gradient(to right, rgb(246, 242, 242), #82c0d1) !important;">
+            <div class="container">
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="n-header--top__left main-menu">
                         <div
@@ -10,7 +11,8 @@
                             <div class="d-flex align-items-center">
                                 <a href="{{ route('website.home') }}" class="brand-logo">
                                     {{-- <img src="{{ $setting->dark_logo_url }}" alt=""> --}}
-                                    <img src="{{asset('frontend\assets\images\skill9_png_logo-2.png')}}" alt="" >
+                                    <img src="{{ asset('frontend\assets\images\skill9_png_logo-2.png') }}"
+                                        alt="">
                                 </a>
                             </div>
 
@@ -65,7 +67,8 @@
                                                 @if (auth()->user()->role !== 'company' && auth()->user()->role !== 'candidate')
                                                     <li>
                                                         <a href="{{ route('company.job.create') }}">
-                                                            <button class="btn btn-primary" style=" background:hsl(196, 45%, 54%) !important"">
+                                                            <button class="btn btn-primary"
+                                                                style=" background:hsl(196, 45%, 54%) !important"">
                                                                 {{ __('post_job') }}
                                                             </button>
                                                         </a>
@@ -152,13 +155,13 @@
                                                 href="{{ route('candidate.job.alerts') }}">{{ __('job_alert') }}</a>
                                         </li>
                                         <!-- @if (auth('user')->user()->role != 'candidate')
-                                            <li>
+<li>
                                                 <a class="{{ linkActive('website.plan', 'text-primary') }}"
                                                     href="{{ route('website.plan') }}">
                                                     {{ __('pricing') }}
                                                 </a>
                                             </li>
-                                        @endif -->
+@endif -->
                                     </ul>
                                 </div>
                             @endif
@@ -184,11 +187,11 @@
                                     </li>
                                     @guest
                                         <!-- <li>
-                                            <a class="{{ linkActive('website.plan', 'text-primary') }}"
-                                                href="{{ route('website.plan') }}">
-                                                {{ __('pricing') }}
-                                            </a>
-                                        </li> -->
+                                                            <a class="{{ linkActive('website.plan', 'text-primary') }}"
+                                                                href="{{ route('website.plan') }}">
+                                                                {{ __('pricing') }}
+                                                            </a>
+                                                        </li> -->
                                         <div class="mbl-btn d-flex">
                                             <a href="{{ route('register') }}"
                                                 class="btn btn-primary d-sm-none text-white">Create Account</a>
@@ -198,13 +201,13 @@
                                     @endguest
 
                                     <!-- @if (auth('user')->check() && auth('user')->user()->role != 'candidate')
-                                        <div>
+<div>
                                             <a class="{{ linkActive('website.plan', 'text-primary') }}"
                                                 href="{{ route('website.plan') }}">
                                                 {{ __('pricing') }}
                                             </a>
                                         </div>
-                                    @endif -->
+@endif -->
                                 </ul>
                             </div>
                         @endif
@@ -379,19 +382,24 @@
                                     @endif
 
                                     <li class="relative">
-                                        <a href="{{ route('user.dashboard') }} " class="candidate-profile">
+                                        <a href="{{ route('user.dashboard') }}" class="candidate-profile">
                                             @company
-                                                <img src="{{ auth()->user()->company->logo_url }}" alt="">
+                                                <img src="{{ auth()->user()->company->logo_url }}" alt="Company Logo">
                                             @else
-                                                <img src="{{ auth()->user()->candidate->photo }}" alt="">
+                                                <img src="{{ auth()->user()->candidate->photo }}" alt="Candidate Photo">
+                                                <span class="tooltip-profile-name"
+                                                    style="display: none;">{{ auth()->user()->name }}</span>
                                             @endcompany
                                         </a>
                                     </li>
+
+
                                     @if (!request()->is('email/verify'))
-                                        <li class="d-none d-sm-block">
+                                        <li class="d-none d-sm-block" title="Click to post a job">
                                             @company
                                                 <a href="{{ route('company.job.create') }}">
-                                                    <button class="btn btn-primary" style=" background:hsl(196, 45%, 54%) !important"">
+                                                    <button class="btn btn-primary"
+                                                        style=" background:hsl(196, 45%, 54%) !important"">
                                                         {{ __('post_job') }}
                                                     </button>
                                                 </a>
@@ -399,7 +407,7 @@
                                         </li>
                                     @endif
                                     @if (request()->is('email/verify'))
-                                        <li>
+                                        <li title="Click to log out">
                                             <a href="{{ route('logout') }}"
                                                 onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                                 <button class="btn btn-primary">
@@ -421,8 +429,8 @@
                                             class="btn btn-outline-primary">{{ __('sign_in') }}</a>
                                     </li>
                                     <li class="d-none d-sm-block">
-                                        <a href="{{ route('company.job.create') }}"
-                                            class="btn btn-primary" style=" background:hsl(196, 45%, 54%) !important"">{{ __('post_job') }}
+                                        <a href="{{ route('company.job.create') }}" class="btn btn-primary"
+                                            style=" background:hsl(196, 45%, 54%) !important"">{{ __('post_job') }}
                                         </a>
                                     </li>
                                 </ul>
@@ -435,4 +443,15 @@
         <div class="rt-mobile-menu-overlay"></div>
     </div>
 </header>
+<!-- Add jQuery library (if not already included) -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+<!-- Add the following script -->
+<script>
+    $(document).ready(function() {
+        $('.candidate-profile').hover(function() {
+            var profileName = $(this).find('.tooltip-profile-name').text();
+            $(this).attr('title', ' ' + profileName + "(Account)");
+        });
+    });
+</script>

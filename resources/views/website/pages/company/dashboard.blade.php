@@ -203,7 +203,7 @@
                                                                             stroke="#0A65CC" stroke-width="1.5"
                                                                             stroke-miterlimit="10" />
                                                                         <path d="M6.875 10H13.125" stroke="#0A65CC"
-                                                                            stroke-width="1.5" stroke-linecap="round"
+                                                                            stroke-width="1.5" stroke-linecmpaap="round"
                                                                             stroke-linejoin="round" />
                                                                         <path d="M10 6.875V13.125" stroke="#0A65CC"
                                                                             stroke-width="1.5" stroke-linecap="round"

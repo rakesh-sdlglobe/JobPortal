@@ -14,12 +14,12 @@
 @endsection
 
 @section('main')
-    <section class="banner-section" style="height:85%; padding-top:50%" >
+    <section class="banner-section" >
         <div class="rt-single-banner5">
             <div class="container position-parent">
                 <div class="row">
                     <div class="col-xl-6" >
-                        <div class="banner-content5" style="height:60%; margin-top:20px">
+                        <div class="banner-content5" >
                             <div class="mx-727" data-aos="fadeindown" data-aos-duration="1000">
                                 <h1 class="text-gray-1000 f-size-60 rt-mb-24" style="color: #1d1b1b">
                                     {{ __('find_job_that_suits_your_interest_skills') }}

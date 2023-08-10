@@ -13,7 +13,7 @@
                             {{ __('organization_type') }}
                             <x-forms.required />
                         </label>
-                        <select name="organization_type_id"
+                        {{-- <select name="organization_type_id"
                             class="select2-taggable @error('organization_type_id') is-invalid @enderror w-100-p"
                             id="organization_type_id">
                             @foreach ($organizationTypes as $type)
@@ -23,7 +23,28 @@
                                     {{ $type->name }}
                                 </option>
                             @endforeach
+                        </select> --}}
+                        <select name="organization_type_id"
+                            class="select2-taggable @error('organization_type_id') is-invalid @enderror w-100-p"
+                            id="organization_type_id">
+                            <option value="none" selected hidden>
+                                {{ __('') }} {{ __('--Select--') }}
+                            </option>
+                            @foreach ($organizationTypes as $type)
+                                {{-- <option
+                                    @if (app('request')->input('type') == $type->id)
+                                        selected
+                                    @endif
+                                    value="{{ $type->id }}">{{ $type->name }}
+                                </option> --}}
+                                <option
+                                    {{ $type->id == old('organization_type_id', $user->company->organization_type_id) ? 'selected' : '' }}
+                                    value="{{ $type->id }}">
+                                    {{ $type->name }}
+                                </option>
+                            @endforeach
                         </select>
+
                         @error('organization_type_id')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -34,7 +55,7 @@
                         <label class="body-font-4 d-block text-gray-900 rt-mb-8">{{ __('industry_type') }}
                             <x-forms.required />
                         </label>
-                        <select type="text"
+                        {{-- <select type="text"
                             class="select2-taggable @error('industry_type_id') is-invalid @enderror w-100-p text-uppercase"
                             name="industry_type_id" id="industry_type">
                             @foreach ($industryTypes as $type)
@@ -44,7 +65,28 @@
                                     {{ $type->name }}
                                 </option>
                             @endforeach
+                        </select> --}}
+                        <select type="text" name="industry_type_id"
+                            class="select2-taggable @error('organization_type_id') is-invalid @enderror w-100-p text-uppercase"
+                            id="industry_type">
+                            <option value="none" selected hidden>
+                                {{ __('--Select--') }}
+                            </option>
+                            @foreach ($industryTypes as $type)
+                                {{-- <option
+                                    @if (app('request')->input('type') == $type->id)
+                                        selected
+                                    @endif
+                                    value="{{ $type->id }}">{{ $type->name }}
+                                </option> --}}
+                                 <option
+                                    {{ $type->id == old('industry_type_id', $user->company->industry_type_id) ? 'selected' : '' }}
+                                    value="{{ $type->id }}">
+                                    {{ $type->name }}
+                                </option>
+                            @endforeach
                         </select>
+
                         @error('industry_type_id')
                             <span class="invalid-feedback" role="alert"><strong>{{ __($message) }}</strong></span>
                         @enderror
@@ -94,7 +136,7 @@
                         </label>
                         <div class="fromGroup">
                             <div class="form-control-icon date datepicker">
-                                <input name="establishment_date" placeholder="m/d/y" type="text"
+                                <input name="establishment_date" placeholder="MM/DD/YYYY" type="text"
                                     class="form-control @error('establishment_date') is-invalid @enderror"
                                     id="date"
                                     value="{{ $user->company->establishment_date ? date('d-m-Y', strtotime($user->company->establishment_date)) : old('establishment_date') }}" />
