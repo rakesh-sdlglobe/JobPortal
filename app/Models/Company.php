@@ -37,13 +37,21 @@ class Company extends Model
             $setting = Setting::first();
             $plan = Plan::find($setting->default_plan);
 
-            $company->userPlan()->create([
-                'plan_id'  =>  $setting->default_plan,
-                'job_limit'  =>  $plan->job_limit,
-                'featured_job_limit'  =>  $plan->featured_job_limit,
-                'highlight_job_limit'  =>  $plan->highlight_job_limit,
-                'candidate_cv_view_limit'  =>  $plan->candidate_cv_view_limit,
-            ]);
+             // $company->userPlan()->create([
+            //     'plan_id'  =>  $setting->default_plan,
+            //     'job_limit'  =>  $plan->job_limit,
+            //     'featured_job_limit'  =>  $plan->featured_job_limit,
+            //     'highlight_job_limit'  =>  $plan->highlight_job_limit,
+            //     'candidate_cv_view_limit'  =>  $plan->candidate_cv_view_limit,
+            // ]);
+
+           $company->userPlan()->create([
+            'plan_id' => 1,
+            'job_limit' => 999,
+            'featured_job_limit' => 0,
+            'highlight_job_limit' => 0,
+            'candidate_cv_view_limit' => 200,
+        ]);
 
 
               // Kanban board

@@ -14,7 +14,7 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 if (!app()->runningInConsole()) {
     Auth::routes(['verify' => setting('email_verification')]);
 } else {
-    Auth::routes(['verify' => false]);
+    Auth::routes(['verify' => true]);
 }
 
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {

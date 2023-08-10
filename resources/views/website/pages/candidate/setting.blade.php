@@ -104,15 +104,15 @@
                                                     <div class="col-lg-6 mb-3">
                                                         <x-forms.label :required="true" name="experience"
                                                             class="pointer body-font-4 d-block text-gray-900 rt-mb-8" />
-                                                        <select name="experience" class="rt-selectactive w-100-p" required>
+                                                        <select name="experience" class="select2-taggable w-100-p" required>
                                                             <option value="none" selected disabled hidden>
-                                                                {{ __('') }} {{ __('--Select --') }}
+                                                                {{ __('--Select--') }}
                                                             </option>
                                                             @foreach ($experiences as $experience)
                                                                 <option
-                                                                    {{ app('request')->input('type') == $experience->id ? 'selected' : '' }}
-                                                                    value="{{ $experience->id }}">{{ $experience->name }}
-                                                                </option>
+                                                                    {{ $candidate->experience_id == $experience->id ? 'selected' : '' }}
+                                                                    value="{{ $experience->id }}">
+                                                                    {{ $experience->name }}</option>
                                                             @endforeach
                                                         </select>
                                                         @error('experience')
@@ -122,21 +122,23 @@
                                                     <div class="col-lg-6 mb-3">
                                                         <x-forms.label :required="true" name="education"
                                                             class="pointer body-font-4 d-block text-gray-900 rt-mb-8" />
-                                                        <select name="nationality" class="select2-taggable w-100-p"
+                                                        <select name="education" class="select2-taggable w-100-p"
                                                             required>
                                                             <option value="none" selected disabled hidden>
-                                                                {{ __('') }} {{ __('--Select--') }}
+                                                                {{ __('--Select--') }}
                                                             </option>
                                                             @foreach ($educations as $education)
                                                                 <option
-                                                                    {{ app('request')->input('type') == $education->id ? 'selected' : '' }}
-                                                                    value="{{ $education->id }}">{{ $education->name }}
-                                                                </option>
+                                                                    {{ $candidate->education_id == $education->id ? 'selected' : '' }}
+                                                                    value="{{ $education->id }}">
+                                                                    {{ $education->name }}</option>
                                                             @endforeach
                                                         </select>
                                                         @error('education')
                                                             <span class="text-danger">{{ $message }}</span>
                                                         @enderror
+
+
                                                     </div>
                                                     <div class="col-12 mb-3">
                                                         <x-forms.label :required="false" name="personal_website"
@@ -242,18 +244,18 @@
                                                     <label class="text-dark" for="role">{{ __('nationality') }}:
                                                         <sup class="text-danger">*</sup></label>
                                                     <select name="nationality" class="rt-selectactive w-100-p" required>
-                                                        <option value="none" selected disabled hidden>
+                                                        {{-- <option value="none" selected disabled hidden>
                                                             {{ __('') }} {{ __('--Select--') }}
-                                                        </option>
+                                                        </option> --}}
                                                         @foreach ($nationalities as $nationality)
-                                                            {{-- <option
+                                                            <option
                                                                 {{ $candidate->nationality_id == $nationality->id ? 'selected' : '' }}
                                                                 value="{{ $nationality->id }}">
-                                                                {{ $nationality->name }}</option> --}}
-                                                            <option
+                                                                {{ $nationality->name }}</option>
+                                                            {{-- <option
                                                                 {{ app('request')->input('type') == $nationality->id ? 'selected' : '' }}
                                                                 value="{{ $nationality->id }}">{{ $nationality->name }}
-                                                            </option>
+                                                            </option> --}}
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -262,10 +264,8 @@
                                                         class="body-font-4 d-block text-gray-900 rt-mb-8" />
                                                     <select class="select2-taggable w-100-p" required
                                                         @error('gender') is-invalid @enderror name="gender">
-                                                        <option value="none" selected disabled hidden>
-                                                            {{ __('') }} {{ __('--Select--') }}
-                                                        </option>
-                                                        <option>
+                                                        <option @if ($candidate->gender == 'male') selected @endif
+                                                            value="male">
                                                             {{ __('male') }}
                                                         </option>
                                                         <option @if ($candidate->gender == 'female') selected @endif
@@ -287,10 +287,9 @@
                                                     <x-forms.label :required="true" name="marital_status"
                                                         class="body-font-4 d-block text-gray-900 rt-mb-8" />
                                                     <select name="marital_status" class="rt-selectactive w-100-p">
-                                                        <option value="none" selected disabled hidden>
-                                                            {{ __('') }} {{ __('--Select--') }}
-                                                        </option>
-                                                        <option>{{ __('married') }}</option>
+
+                                                        <option @if ($candidate->marital_status == 'married') selected @endif
+                                                            value="married">{{ __('married') }}</option>
                                                         <option @if ($candidate->marital_status == 'single') selected @endif
                                                             value="single">{{ __('single') }}</option>
                                                     </select>
@@ -303,14 +302,11 @@
                                                     <x-forms.label :required="true" name="profession"
                                                         class="body-font-4 d-block text-gray-900 rt-mb-8" />
                                                     <select name="profession" class="rt-selectactive w-100-p" required>
-                                                        <option value="none" selected disabled hidden>
-                                                            {{ __('') }} {{ __('--Select--') }}
-                                                        </option>
                                                         @foreach ($professions as $profession)
                                                             <option
-                                                                {{ app('request')->input('type') == $profession->id ? 'selected' : '' }}
-                                                                value="{{ $profession->id }}">{{ $profession->name }}
-                                                            </option>
+                                                                {{ $candidate->profession_id == $profession->id ? 'selected' : '' }}
+                                                                value="{{ $profession->id }}">
+                                                                {{ $profession->name }}</option>
                                                         @endforeach
                                                     </select>
                                                     @error('profession')
@@ -335,13 +331,13 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-12 mb-3">
-                                                    <x-forms.label :required="false" name="biography"
-                                                        class="body-font-4 d-block text-gray-900 rt-mb-8" />
-                                                    <textarea name="bio" id="default">{!! $candidate->bio !!}</textarea>
-                                                    @error('bio')
-                                                        <span class="text-danger">{{ __($message) }}</span>
-                                                    @enderror
-                                                </div>
+                                                <x-forms.label :required="false" name="biography"
+                                                    class="body-font-4 d-block text-gray-900 rt-mb-8" />
+                                                <textarea name="bio" id="default">{!! $candidate->bio !!}</textarea>
+                                                @error('bio')
+                                                    <span class="text-danger">{{ __($message) }}</span>
+                                                @enderror
+                                            </div>
                                                 <div class="col-lg-12 mt-4">
                                                     <button type="submit" class="btn btn-primary">
                                                         {{ __('save_changes') }}
@@ -522,7 +518,7 @@
                                         @method('put')
                                         <input type="hidden" name="type" value="contact">
                                         <div class="dashboard-account-setting-item pb-0">
-                                            <h6>{{ __('locations') }}</h6>
+                                            {{-- <h6>{{ __('locations') }}</h6>
                                             <div class="row">
                                                 <div class="col-lg-12 mb-3">
                                                     <x-website.map.map-warning />
@@ -542,7 +538,7 @@
                                                         <span class="ml-3 text-md text-danger">{{ $message }}</span>
                                                     @enderror
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                         </div>
                                         <div class="dashboard-account-setting-item">
                                             <h6>{{ __('phone_email') }}</h6>
@@ -589,46 +585,46 @@
                                         <form action="{{ route('candidate.settingUpdate') }}" method="POST">
                                             @csrf
                                             @method('PUT')
-                                            {{-- <input type="hidden" name="type" value="alert">
-                                        <div class="row">
-                                            <div class="col-lg-6">
-                                                <div class="form-check from-chekbox-custom rt-mb-15">
-                                                    <input name="shortlisted" class="form-check-input" type="checkbox"
-                                                        value="1" id="check1"
-                                                        {{ auth()->user()->shortlisted_alert ? 'checked' : '' }}>
-                                                    <x-forms.label for="check1" :required="false"
-                                                        name="notify_me_when_employers_shortlisted_me"
-                                                        class="form-check-label pointer f-size-14" />
+                                            <input type="hidden" name="type" value="alert">
+                                            {{-- <div class="row">
+                                                <div class="col-lg-6">
+                                                    <div class="form-check from-chekbox-custom rt-mb-15">
+                                                        <input name="shortlisted" class="form-check-input"
+                                                            type="checkbox" value="1" id="check1"
+                                                            {{ auth()->user()->shortlisted_alert ? 'checked' : '' }}>
+                                                        <x-forms.label for="check1" :required="false"
+                                                            name="notify_me_when_employers_shortlisted_me"
+                                                            class="form-check-label pointer f-size-14" />
+                                                    </div>
+                                                    <div class="form-check from-chekbox-custom rt-mb-15">
+                                                        <input name="job_expired" class="form-check-input"
+                                                            type="checkbox" value="1" id="check2"
+                                                            {{ auth()->user()->job_expired_alert ? 'checked' : '' }}>
+                                                        <x-forms.label for="check2" :required="false"
+                                                            name="notify_me_when_my_applied_jobs_are_expire"
+                                                            class="form-check-label pointer f-size-14" />
+                                                    </div>
                                                 </div>
-                                                <div class="form-check from-chekbox-custom rt-mb-15">
-                                                    <input name="job_expired" class="form-check-input" type="checkbox"
-                                                        value="1" id="check2"
-                                                        {{ auth()->user()->job_expired_alert ? 'checked' : '' }}>
-                                                    <x-forms.label for="check2" :required="false"
-                                                        name="notify_me_when_my_applied_jobs_are_expire"
-                                                        class="form-check-label pointer f-size-14" />
+                                                <div class="col-lg-6">
+                                                    <div class="form-check from-chekbox-custom">
+                                                        <input name="recent_activity" class="form-check-input"
+                                                            type="checkbox" value="1" id="check3"
+                                                            {{ auth()->user()->recent_activities_alert ? 'checked' : '' }}>
+                                                        <x-forms.label for="check3" :required="false"
+                                                            name="notify_me_my_recent_activities"
+                                                            class="form-check-label pointer f-size-14" />
+                                                    </div>
+                                                    <div class="form-check from-chekbox-custom">
+                                                        <input name="new_job" class="form-check-input" type="checkbox"
+                                                            value="1" id="check3"
+                                                            {{ auth()->user()->new_job_alert ? 'checked' : '' }}>
+                                                        <x-forms.label for="check3" :required="false"
+                                                            name="notify_me_when_new_job_published"
+                                                            class="form-check-label pointer f-size-14" />
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-6">
-                                                <div class="form-check from-chekbox-custom">
-                                                    <input name="recent_activity" class="form-check-input"
-                                                        type="checkbox" value="1" id="check3"
-                                                        {{ auth()->user()->recent_activities_alert ? 'checked' : '' }}>
-                                                    <x-forms.label for="check3" :required="false"
-                                                        name="notify_me_my_recent_activities"
-                                                        class="form-check-label pointer f-size-14" />
-                                                </div>
-                                                <div class="form-check from-chekbox-custom">
-                                                    <input name="new_job" class="form-check-input" type="checkbox"
-                                                        value="1" id="check3"
-                                                        {{ auth()->user()->new_job_alert ? 'checked' : '' }}>
-                                                    <x-forms.label for="check3" :required="false"
-                                                        name="notify_me_when_new_job_published"
-                                                        class="form-check-label pointer f-size-14" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <hr> --}}
+                                            <hr>--}}
                                             <div class="row">
                                                 <div class="d-flex justify-content-between align-items-center">
                                                     <h6>{{ __('job_alert') }}</h6>
@@ -649,15 +645,10 @@
                                                         class="f-size-14 text-gray-700 rt-mb-6" />
                                                     <div class="fromGroup has-icon2">
                                                         <div class="form-control-icon">
-                                                            {{-- <select name="role_id" id="job_role"> --}}
-                                                            <select name="role_id" id="job_role" class="select2-taggable w-100-p"
-                                                                required>
-                                                                <option value="none" selected disabled hidden>
-                                                                    {{ __('') }} {{ __('--Select--') }}
-                                                                </option>
+                                                            <select name="role_id" id="job_role" class="rt-selectactive w-100-p" required>
                                                                 @foreach ($job_roles as $job_role)
                                                                     <option value="{{ $job_role->id }}"
-                                                                        @if (app('request')->input('type') == $candidate->role_id) selected @endif>
+                                                                        @if ($job_role->id == $candidate->role_id) selected @endif>
                                                                         {{ $job_role->name }}</option>
                                                                 @endforeach
                                                             </select>
@@ -1221,7 +1212,7 @@
         $('.mapboxgl-ctrl-attrib-inner').addClass('d-none');
     </script>
     <!-- ============== map box ============= -->
-    <!-- ============== google map ========= -->
+    {{-- <!-- ============== google map ========= -->
     <x-website.map.google-map-check />
     <script>
         function initMap() {
@@ -1376,7 +1367,7 @@
             $scr = $link1 . $link2 . $Link3;
         @endphp;
     </script>
-    <script src="{{ $scr }}" async defer></script>
+    <script src="{{ $scr }}" async defer></script> --}}
     <!-- =============== google map ========= -->
     <script type="text/javascript">
         $(document).ready(function() {
