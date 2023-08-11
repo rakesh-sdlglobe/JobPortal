@@ -145,6 +145,7 @@
                                                 <a href="{{ route('login') }}">{{ __('log_in') }}</a>
                                             </span>
                                 </span>
+                               
                                 <div class="d-flex justify-content-between btn-group flex-column flex-md-row ">
                                     <div class="row">
                                         @php

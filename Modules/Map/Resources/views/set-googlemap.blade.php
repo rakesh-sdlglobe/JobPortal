@@ -1,4 +1,4 @@
-<script src="{{ asset('frontend') }}/assets/js/axios.min.js"></script>
+{{-- <script src="{{ asset('frontend') }}/assets/js/axios.min.js"></script>
 <x-website.map.google-map-check/>
 
 <script>
@@ -185,4 +185,4 @@
     $(document).ready(function() {
         $("[data-toggle=tooltip]").tooltip()
     })
-</script>
+</script> --}}

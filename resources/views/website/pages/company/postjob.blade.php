@@ -60,7 +60,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="post-job-item rt-mb-15">
+                            {{-- <div class="post-job-item rt-mb-15">
                                 <h4 class="f-size-18 ft-wt-5 rt-mb-20 lh-1">
                                     {{ __('location') }} <span class="text-danger">*</span>
                                     <small class="h6">
@@ -85,7 +85,7 @@
                                         @enderror
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="post-job-item rt-mb-15">
                                 <h4 class="f-size-18 ft-wt-5 rt-mb-20 lh-1">{{ __('salary') }}</h4>
                                 <div class="row">

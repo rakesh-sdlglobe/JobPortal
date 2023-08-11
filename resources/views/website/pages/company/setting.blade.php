@@ -366,7 +366,7 @@
                                         @csrf
                                         @method('put')
                                         <input type="hidden" name="type" value="contact">
-                                        <div class="dashboard-account-setting-item pb-0">
+                                        {{-- <div class="dashboard-account-setting-item pb-0">
                                            <x-website.map.map-warning/>
                                             <h6>
                                                 {{ __('company_location') }}
@@ -388,7 +388,7 @@
                                                     <span class="ml-3 text-md text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
-                                        </div>
+                                        </div> --}}
 
                                         <div class="dashboard-account-setting-item">
                                             <h6>{{ __('phone') }} & {{ __('email') }}</h6>
@@ -920,7 +920,7 @@
             window.initMap = initMap;
 
             @php
-                $link1 = 'https://maps.googleapis.com/maps/api/js?key=';
+                $link1 = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCgjT0YW2eP-ul45SpdUAoW-ktbW0YnXuk';
                 $link2 = $setting->google_map_key;
                 $Link3 = '&callback=initMap&libraries=places,geometry';
                 $scr = $link1 . $link2 . $Link3;

@@ -646,18 +646,13 @@
                                                     <div class="fromGroup has-icon2">
                                                         <div class="form-control-icon">
                                                             {{-- <select name="role_id" id="job_role"> --}}
-                                                            <select name="role_id" id="job_role" class="select2-taggable w-100-p"
-                                                                required>
-                                                                <option value="none" selected disabled hidden>
-                                                                    {{ __('') }} {{ __('--Select--') }}
-                                                                </option>
-                                                                @foreach ($job_roles as $job_role)
+                                                            <select name="role_id" id="job_role" class="rt-selectactive w-100-p" required>
+                                                              @foreach ($job_roles as $job_role)
                                                                     <option value="{{ $job_role->id }}"
-                                                                        @if (app('request')->input('type') == $candidate->role_id) selected @endif>
+                                                                        @if ($job_role->id == $candidate->role_id) selected @endif>
                                                                         {{ $job_role->name }}</option>
                                                                 @endforeach
                                                             </select>
-
                                                             <br>
                                                             <p>
                                                                 {{ __('note_you_will_be_notified_for_this_role_only') }}

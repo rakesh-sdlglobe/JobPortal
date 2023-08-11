@@ -2,8 +2,8 @@
 <link rel="stylesheet" href="{{ asset('cssfile/style.css') }}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Handjet:wght@300;400;500;600;700;800&family=Qwigley&display=swap"
+    rel="stylesheet">
 @section('meta')
     @php
         $data = metaData('login');
@@ -23,7 +23,7 @@
 @endsection
 
 @section('content')
-    <div class="row" id="login-row">
+    <div class="row" id="login-row" style="height: 68rem">
         <div class="auth-box2">
             <div class="full-height col-12 order-1 order-lg-0">
                 <div class="container">
@@ -33,8 +33,13 @@
                                 style="padding:20px;">
                                 @csrf
                                 <a href="/" class="brand-logo" id="img-login-logo"><img
-                                        src="{{asset('frontend\assets\images\skill9_png_logo-2.png')}}" alt=""></a>
-                                <h4 style=" text-shadow: 2px 2px #fff; font-family: 'Dancing Script', cursive;">"CHANGE HAPPENS TODAY"</h4>
+                                        src="{{ asset('frontend\assets\images\skill9_png_logo-2.png') }}"
+                                        alt=""></a>
+                                <h4
+                                    style=" font-family:  'Handjet',sans-serif; font-weight:bold; word-spacing: 5px; color:">
+                                    "<span style="color: #dd5399">CHANGE</span> <span style=" color:#f1cf45">HAPPENS</span>
+                                    <span style="color: #55a2bf;">TODAY</span>"
+                                </h4>
                                 <hr style="border: black; height:2px">
                                 <h6 class="rt-mb-20 text-center text-gray-400">{{ __('LOGIN SKILL 9 JOB PORTAL ') }}</h6>
                                 <div class="fromGroup rt-mb-15">
@@ -63,7 +68,8 @@
                                         <div class="form-check from-chekbox-custom">
                                             <input name="remember" id="remember" class="form-check-input" type="checkbox"
                                                 value="1">
-                                            <label class="form-check-label pointer text-gray-700 f-size-14 mt-1" for="remember">
+                                            <label class="form-check-label pointer text-gray-700 f-size-14 mt-1"
+                                                for="remember">
                                                 {{ __('keep_me_logged') }}
                                             </label>
                                         </div>
@@ -94,7 +100,10 @@
                                     </span>
                                 </span>
                             </form>
-                            <div class="">
+                            <h2 style="  font-size: 14px; width: 100%; text-align: center; border-bottom: 1px solid gray;  line-height: 0.1em; margin: 10px 0 20p" >
+                                <span style="background :#d5edf6; padding:0 10px; ">Or Sign Up Using</span>
+                            </h2>
+                            <div class="" style="margin-top: 20px">
                                 <div class="row">
                                     @php
                                         $google = config('zakirsoft.google_active') && config('zakirsoft.google_id') && config('zakirsoft.google_secret');

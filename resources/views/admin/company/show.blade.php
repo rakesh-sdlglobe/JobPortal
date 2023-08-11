@@ -66,12 +66,12 @@
                                             <td width="80%">{{ $company->industry ? $company->industry->name : '' }}
                                             </td>
                                         </tr>
-                                        <tr class="mb-5">
+                                        {{-- <tr class="mb-5">
                                             <th width="20%">{{ __('address') }}</th>
                                             <td width="80%"><a
                                                     href="{{ $company->user->contactInfo->map_address }}">{{ $company->user->contactInfo->address }}</a>
                                             </td>
-                                        </tr>
+                                        </tr> --}}
                                         <tr class="mb-5">
                                             <th width="20%">{{ __('contact_email') }}</th>
                                             <td width="80%">{{ $company->user->contactInfo->email }}</td>

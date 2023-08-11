@@ -208,6 +208,6 @@
             $(this).parent().parent().parent('div').remove();
         });
     </script>
-    @include('map::set-googlemap')
+    {{-- @include('map::set-googlemap') --}}
     @include('map::set-mapbox')
 @endsection

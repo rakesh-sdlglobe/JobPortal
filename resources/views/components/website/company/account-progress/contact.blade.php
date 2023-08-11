@@ -7,7 +7,8 @@
     <fieldset>
         <div class="form-card mb-4">
             <div class="dashboard-account-setting-item pb-0">
-                <h6>{{ __('company_location') }}
+
+                {{-- <h6>{{ __('company_location') }}
                     <span class="text-danger">*</span>
                     <small class="h6">
                         ({{ __('click_to_add_a_pointer') }})
@@ -28,7 +29,7 @@
                         <span class="ml-3 text-md text-danger">{{ $message }}</span>
                     @enderror
                 </div>
-            </div>
+            </div> --}}
 
             <div class="dashboard-account-setting-item">
                 <h6>{{ __('phone_email') }}</h6>
@@ -59,7 +60,7 @@
                                 <input class="form-control @error('email') is-invalid @enderror" name="email"
                                     type="email" placeholder="{{ __('email_address') }}"
                                     {{-- value="{{ old('email', $user->contactInfo->email) }}"> --}}
-                                     value="{{ old('phone') }}">
+                                     value="{{ old('email') }}">
                                 <div class="icon-badge-2">
                                     <x-svg.envelope-icon width="24" height="24" />
                                 </div>
@@ -71,6 +72,22 @@
                             </span>
                         @enderror
                     </div>
+                    {{-- <div class="col-lg-6 mb-3">
+                        <label class="pointer body-font-4 d-block text-gray-900 rt-mb-8">
+                            {{ __('Address') }}
+                            <x-forms.required />
+                        </label>
+                        <input class="phonecode @error('address') is-invalid border-danger @enderror" name="address"
+                            {{-- type="number" value="{{ old('phone', $user->contactInfo->phone) }}" 
+                           type="text" value="{{ old('address') }}"
+
+                            placeholder="{{ __('address') }}" />
+                        @error('address')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ __($message) }}</strong>
+                            </span>
+                        @enderror
+                    </div> --}}
                 </div>
 
             </div>
