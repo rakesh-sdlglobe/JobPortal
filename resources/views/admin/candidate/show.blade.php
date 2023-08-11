@@ -66,10 +66,10 @@
                                     <td width="80%"><a href="{{ $candidate->website }}">{{ $candidate->website }}</a>
                                     </td>
                                 </tr>
-                                <tr class="mb-5">
+                                {{-- <tr class="mb-5">
                                     <th width="20%">{!! __('bio') !!}</th>
                                     <td width="80%">{{ $candidate->bio }}</td>
-                                </tr>
+                                </tr> --}}
                                 <tr class="mb-5">
                                     <th width="20%">{{ __('marital_status') }}</th>
                                     <td width="80%">{{ __($candidate->marital_status) }}</td>
@@ -91,7 +91,7 @@
                     </div>
                 </div>
             </div>
-            <div class="card">
+            {{-- <div class="card">
                 <div class="card-header">
                     <h3 class="card-title line-height-36">
                         {{ __('location') }}
@@ -110,7 +110,7 @@
                         <div class="map mymap" id="google-map"></div>
                     @endif
                 </div>
-            </div>
+            </div> --}}
             <x-admin.candidate.card-component title="{{ __('applied_jobs') }}" :jobs="$appliedJobs"
                 link="website.job.apply" />
             <x-admin.candidate.card-component title="{{ __('bookmark_jobs') }}" :jobs="$bookmarkJobs"
@@ -168,7 +168,7 @@
     </script>
     <!-- ================ mapbox map ============== -->
     <!-- ================ google map ============== -->
-    <x-website.map.google-map-check/>
+    {{-- <x-website.map.google-map-check/>
     <script>
         function initMap() {
             var token = "{{ $setting->google_map_key }}";
@@ -198,7 +198,7 @@
             });
         }
         window.initMap = initMap;
-    </script>
+    </script> 
     <script>
         @php
             $link1 = 'https://maps.googleapis.com/maps/api/js?key=';
@@ -207,6 +207,6 @@
             $scr = $link1 . $link2 . $Link3;
         @endphp;
     </script>
-    <script src="{{ $scr }}" async defer></script>
+    <script src="{{ $scr }}" async defer></script> --}}
     <!-- ================ google map ============== -->
 @endsection

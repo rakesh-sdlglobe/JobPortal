@@ -127,6 +127,13 @@
                     </a>
                 </div>
             @endif
+            <div style="background: #fef7e7">
+                 <hr>
+                <p class="text-center mt-2">Clear All</p>
+            </div>
+            
         </div>
+
     </div>
+
 </li>

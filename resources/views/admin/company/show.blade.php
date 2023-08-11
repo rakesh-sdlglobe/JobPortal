@@ -45,11 +45,11 @@
                                             <td width="80%">
                                                 {{ $company->organization ? $company->organization->name : '' }}</td>
                                         </tr>
-                                        <tr class="mb-5">
+                                        {{-- <tr class="mb-5">
                                             <th width="20%">{{ __('nationality') }}</th>
                                             <td width="80%">
                                                 {{ $company->nationality ? $company->nationality->name : '' }}</td>
-                                        </tr>
+                                        </tr> --}}
                                         <tr class="mb-5">
                                             <th width="20%">{{ __('establishment_date') }}</th>
                                             <td width="80%">
@@ -80,7 +80,7 @@
                                             <th width="20%">{{ __('phone') }}</th>
                                             <td width="80%">{{ $company->user->contactInfo->phone }}</td>
                                         </tr>
-                                        <tr class="mb-5">
+                                        {{-- <tr class="mb-5">
                                             <th width="20%">{{ __('social_profile') }}</th>
                                             <td width="80%">
                                                 @if (!empty($company->user->socialInfo->facebook) && $company->user->socialInfo->facebook !== null)
@@ -108,7 +108,7 @@
                                                     </a>
                                                 @endif
                                             </td>
-                                        </tr>
+                                        </tr> --}}
                                     </tbody>
                                 </table>
                             </div>
@@ -140,7 +140,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <div class="card">
+                {{-- <div class="card">
                     <div class="card-header">
                         <h3 class="card-title line-height-36">{{ __('location') }}</h3>
                     </div>
@@ -156,7 +156,7 @@
                                 <div class="map mymap" id="google-map"></div>
                             @endif
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>
@@ -352,7 +352,7 @@
     </script>
     <!-- ================ mapbox map ============== -->
     <!-- ================ google map ============== -->
-    <x-website.map.google-map-check/>
+    {{-- <x-website.map.google-map-check/>
 
     <script>
         function initMap() {
@@ -392,6 +392,6 @@
             $scr = $link1 . $link2 . $Link3;
         @endphp;
     </script>
-    <script src="{{ $scr }}" async defer></script>
+    <script src="{{ $scr }}" async defer></script> --}}
     <!-- ================ google map ============== -->
 @endsection

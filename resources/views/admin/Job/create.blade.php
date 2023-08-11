@@ -108,7 +108,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card">
+                    {{-- <div class="card">
                         <div class="card-header">
                             <div class="card-title">
                                 {{ __('location') }}
@@ -133,7 +133,7 @@
                                 <span class="ml-3 text-md text-danger">{{ $message }}</span>
                             @enderror
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="col-6">
                     <div class="card">

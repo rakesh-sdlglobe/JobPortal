@@ -357,7 +357,7 @@
                         </div>
                     </div>
 
-                    <div class="border border-2 border-primary-50 rt-rounded-12 rt-mb-24 lg:max-536">
+                   {{--  <div class="border border-2 border-primary-50 rt-rounded-12 rt-mb-24 lg:max-536">
                         <div class="body-font-1 ft-wt-5 custom-p">{{ __('location') }}
                         </div>
                         <div>
@@ -372,7 +372,7 @@
                                 <div class="map mymap" id="google-map"></div>
                             @endif
                         </div>
-                    </div>
+                    </div> --}}
 
                     <div class="p-32 border border-2 border-primary-50 rt-rounded-12 rt-mb-24 lg:max-536">
                         <div class="rt-single-icon-box rt-mb-32">

@@ -159,6 +159,8 @@
                         <div class="text-center">{{ __('no_notification') }}</div>
                     @endif
                 </ul>
+                <hr>
+                <p class="text-center">{{__('Clear All')}}</p>
             </div>
             @if (companyNotificationsCount() > 6)
                 <div class="text-center bg-gray-50 p-2">

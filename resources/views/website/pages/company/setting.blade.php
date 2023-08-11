@@ -774,7 +774,7 @@
         <!-- ============== map box end ============= -->
     @else
         <!-- ============== google map ========= -->
-        <x-website.map.google-map-check/>
+        {{-- <x-website.map.google-map-check/>
         <script>
             function initMap() {
                 var token = "{{ $setting->google_map_key }}";
@@ -926,6 +926,6 @@
                 $scr = $link1 . $link2 . $Link3;
             @endphp;
         </script>
-        <script src="{{ $scr }}" async defer></script>
+        <script src="{{ $scr }}" async defer></script> --}}
     @endif
 @endsection
