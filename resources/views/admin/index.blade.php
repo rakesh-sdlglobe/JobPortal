@@ -102,9 +102,9 @@
             </div>
         </div>
     </div>
-    <!--<div class="row">
+    {{--<div class="row">
          <div class="col-6">
-            <!-- BAR CHART 
+             BAR CHART
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">{{ __('your_earnings_overview_of_this_year') }}</h3>
@@ -114,10 +114,10 @@
                         <canvas id="barChart" class="chart-design"></canvas>
                     </div>
                 </div>
-                <!-- /.card-body
+                 /.card-body
             </div>
-            <!-- /.card 
-        </div> 
+             /.card
+        </div>
         <div class="col-6">
             <div class="card">
                 <div class="card-header">
@@ -141,10 +141,10 @@
                     <canvas id="locationChart" class="chart-design"></canvas>
                 </div>
                 @endif
-                <!-- /.card-body 
+                 /.card-body
             </div>
         </div>
-    </div>-->
+    </div>--}}
     <div class="row">
         <div class="col-12 col-lg-5">
             <div class="card">
@@ -297,7 +297,7 @@
                         </div>
                     </div>
                     <div class="card-body table-responsive p-0">
-                        <table class="table">
+                        {{-- <table class="table">
                             <thead>
                                 <tr>
                                     <th>#</th>
@@ -365,7 +365,7 @@
                                     </tr>
                                 @endif
                             </tbody>
-                        </table>
+                        </table> --}}
                     </div>
                 </div>
             </div>
@@ -396,48 +396,48 @@
             //-------------
             //- BAR CHART -
             //-------------
-            var barChartCanvas = $('#barChart').get(0).getContext('2d')
-            var barChartData = jQuery.extend(true, {}, areaChartData)
-            var temp = areaChartData.datasets
-            barChartData.datasets = temp
+            // var barChartCanvas = $('#barChart').get(0).getContext('2d')
+            // var barChartData = jQuery.extend(true, {}, areaChartData)
+            // var temp = areaChartData.datasets
+            // barChartData.datasets = temp
 
-            var barChartOptions = {
-                responsive: true,
-                maintainAspectRatio: false,
-                datasetFill: false,
-                display: false
-            }
+            // var barChartOptions = {
+            //     responsive: true,
+            //     maintainAspectRatio: false,
+            //     datasetFill: false,
+            //     display: false
+            // }
 
-            var barChart = new Chart(barChartCanvas, {
-                type: 'bar',
-                data: barChartData,
-                options: barChartOptions
-            })
+            // var barChart = new Chart(barChartCanvas, {
+            //     type: 'bar',
+            //     data: barChartData,
+            //     options: barChartOptions
+            // })
 
             //-------------
             //- PIE CHART -
             //-------------
-            var locationChart = $('#locationChart').get(0).getContext('2d')
-            var locationData = {
-                labels: {!! json_encode($popular_countries->pluck('country')->all()) !!},
-                datasets: [{
-                    data: {!! json_encode($popular_countries->pluck('total')->all()) !!},
-                    backgroundColor: ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc', '#d2d6de', '#AE4CCF',
-                        '#FF5F7E', '#99FEFF', '#000000', '#FB3640'
-                    ],
-                }]
-            }
-            var locationChartOptions = {
-                maintainAspectRatio: false,
-                responsive: true,
-            }
-            //Create pie or douhnut chart
-            // You can switch between pie and douhnut using the method below.
-            var donutChart = new Chart(locationChart, {
-                type: 'pie',
-                data: locationData,
-                options: locationChartOptions
-            })
+            // var locationChart = $('#locationChart').get(0).getContext('2d')
+            // var locationData = {
+            //     labels: {!! json_encode($popular_countries->pluck('country')->all()) !!},
+            //     datasets: [{
+            //         data: {!! json_encode($popular_countries->pluck('total')->all()) !!},
+            //         backgroundColor: ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc', '#d2d6de', '#AE4CCF',
+            //             '#FF5F7E', '#99FEFF', '#000000', '#FB3640'
+            //         ],
+            //     }]
+            // }
+            // var locationChartOptions = {
+            //     maintainAspectRatio: false,
+            //     responsive: true,
+            // }
+            // //Create pie or douhnut chart
+            // // You can switch between pie and douhnut using the method below.
+            // var donutChart = new Chart(locationChart, {
+            //     type: 'pie',
+            //     data: locationData,
+            //     options: locationChartOptions
+            // })
         </script>
     @endsection
 
