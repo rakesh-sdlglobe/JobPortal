@@ -144,6 +144,7 @@ class CandidateController extends Controller
             "bio" => $request->bio,
             "marital_status" => $request->marital_status,
             "birth_date" => $date,
+            "phone"=>$request->phone
         ]);
 
         // cv

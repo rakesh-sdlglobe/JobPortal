@@ -14,10 +14,10 @@ class RemoveAddSettingsTable extends Migration
     public function up()
     {
         Schema::table('settings', function (Blueprint $table) {
-            $table->dropColumn('logo_image');
-            $table->dropColumn('logo_image2');
-            $table->string('dark_logo')->nullable()->after('email');
-            $table->string('light_logo')->nullable()->after('dark_logo');
+            // $table->dropColumn('logo_image');
+            // $table->dropColumn('logo_image2');
+            // $table->string('dark_logo')->nullable()->after('email');
+            // $table->string('light_logo')->nullable()->after('dark_logo');
         });
     }
 

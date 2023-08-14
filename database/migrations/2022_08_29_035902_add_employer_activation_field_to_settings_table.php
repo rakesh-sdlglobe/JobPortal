@@ -14,7 +14,7 @@ class AddEmployerActivationFieldToSettingsTable extends Migration
     public function up()
     {
         Schema::table('settings', function (Blueprint $table) {
-            $table->boolean('employer_auto_activation')->default(true);
+            // $table->boolean('employer_auto_activation')->default(true);
         });
     }
 
